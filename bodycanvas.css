@@ -1,0 +1,82 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-family:Lucida Sans Unicode,san-serif;
+}
+a
+{
+    text-decoration:none;
+}
+html, body
+{
+    height: 100%;
+    overflow-x: hidden;
+}
+canvas
+{
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #696868;
+}
+#Pushleft
+{
+    background-position: right;
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    z-index: 1;
+    background-image: url('UI_Resource/Push_bg.png');
+    background-repeat: repeat-y;
+}
+#Pushleft:hover #Pushleft_icon
+{
+    background-image: url("UI_Resource/pack_pixel_arrows_hover.png");
+}
+#Nodesystem
+{
+    width: 100%;
+    height: 100%;
+}
+#Pushleft_icon
+{
+    background-position: center center;
+    display: block;
+    position: relative;
+    height: 100%;
+    background-image: url("UI_Resource/pack_pixel_arrows_01_03.png");
+    background-repeat: no-repeat;
+}
+#inspired_toggle
+{
+    position: absolute;
+    z-index: 2;
+    right: 100px;
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.8);
+	/* For IE 5.5 - 7*/
+	padding:10px;
+	font-size:13px;
+	color:White;
+}
+#inspired_button:hover
+{
+    cursor:pointer;
+}
+#inspired_toggle a
+{
+    color:#427bc7;
+    position:relative;
+}
+#inspired_button
+{
+    position:absolute;
+    bottom:7px;
+    right:30px;
+}
+#inspired_toggle img 
+{
+}

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+    <link href="bodycanvas.css" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"
+        type="text/javascript"></script>
+    <script src="bodycanvas.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            x = $("#Nodesystem").width();
+            y = $(window).height() - 20;
+            $("#bodycanvas").attr("width", x);
+            $("#bodycanvas").attr("height", y / 3);
+            $("#bodycanvas1").attr("width", x);
+            $("#bodycanvas1").attr("height", y / 3);
+            $("#bodycanvas2").attr("width", x);
+            $("#bodycanvas2").attr("height", y / 3);
+            $("#bodycanvas").nodemaxtrix({
+                'fadealpha': '0.1',
+                'color': 'rgb(51,102,255)',
+                'dotcolor': 'rgba(51,102,255,0.4)',
+                'repeat': 'true'
+            });
+            $("#bodycanvas1").nodemaxtrix({
+                'fadealpha': '0.1',
+                'color': 'rgb(255,47,5)',
+                'dotcolor': 'rgba(255,47,5,0.4)',
+                'repeat': 'true'
+            });
+            $("#bodycanvas2").nodemaxtrix({
+                'fadealpha': '0.1',
+                'color': 'rgb(70,180,29)',
+                'dotcolor': 'rgba(70,180,29,0.4)',
+                'repeat': 'true'
+            });
+            //-----------------  
+            $("#Pushleft").hover(function () {
+                if (!$(this).hasClass('animated')) {
+                    $(this).dequeue().stop().animate({ width: "100px" }, { 'easing': 'easeOutBounce', 'duration': 1000 });
+                }
+            }, function () {
+                $(this).addClass('animated').animate({ width: "50px" }, "1000", "linear", function () {
+                    $(this).removeClass('animated').dequeue();
+                });
+            });
+            $("#inspired_button").toggle(function () {
+                if (!$("#inspired_toggle").hasClass('animated')) {
+                    $("#inspired_toggle").dequeue().stop().animate({ top: "0px" }, { 'easing': 'swing', 'duration': 1000 });
+                    $("#inspired_button").attr("src", "UI_Resource/tiny_up_arrow_03.png");
+                }
+            }, function () {
+                $("#inspired_toggle").addClass('animated').animate({ top: -10 - $("#inspired").height() }, "1000", "linear", function () {
+                    $("#inspired_toggle").removeClass('animated').dequeue();
+                    $("#inspired_button").attr("src", "UI_Resource/tiny_down_arrow_03.png");
+                });
+            });
+            //------------------------
+            $(window).load(function() {
+                $("#inspired_toggle").css('top',-10 - $("#inspired").height());
+            });
+            //------------------------
+            $("#Pushleft").click(function () {
+                pushdistance = -$("#Nodesystem").width() + 49;
+                $("#Nodesystem").animate(
+                {
+                    right: '+=' + pushdistance
+                },
+                {
+                    'easing': 'easeOutBounce',
+                    'duration': 2000
+                }
+                );
+            });
+        });
+            
+    </script>
+</head>
+<body>
+    <div id="Nodesystem">
+        <div id="Pushleft">
+            <a id="Pushleft_icon" href="#"></a>
+        </div>
+        <div id="inspired_toggle">
+            <img id="inspired" src="UI_Resource/artfromcode1.jpg" />            
+            <br />
+            <span>Inspired by </span><a href="http://www.artfromcode.com/?p=666" target=_blank>this</a>
+            <img id="inspired_button"src="UI_Resource/tiny_down_arrow_03.png" />
+        </div>
+        <canvas id="bodycanvas">
+        </canvas>
+        <canvas id="bodycanvas1">
+        </canvas>
+        <canvas id="bodycanvas2">
+        </canvas>
+    </div>
+    <p id="timeout">
+    </p>
+</body>
+</html>
